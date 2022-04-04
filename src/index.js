@@ -11,5 +11,5 @@ render(
         <App />
     </React.StrictMode>
     </Provider>
-,document.getElementById('root')
+    ,document.getElementById('root')
 );
