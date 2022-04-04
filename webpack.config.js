@@ -1,42 +1,58 @@
-const webpack = require('webpack');
+const HWP = require('html-webpack-plugin');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
-const config = {
-  entry: ['react-hot-loader/patch', './src/index.js'],
+module.exports = {
+  mode: process.env.NODE_ENV,
+  entry: path.join(__dirname, '/src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'build.js',
+    path: path.join(__dirname, '/dist')
   },
-  module: {
-    rules: [
+  module:{
+    rules:[
       {
-        test: /\.(js|jsx)$/,
-        use: 'babel-loader',
+        test: /\.jsx?/,
         exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/env', '@babel/react'],
+          plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+        }
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        test: /\.s?css/,
+        use: [
+          'style-loader', 'css-loader', 'sass-loader',
+        ]
       },
-    ],
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+    ]
   },
-  devServer: {
-    static: {
-      directory: './dist',
-    },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      templateContent: ({ htmlWebpackPlugin }) =>
-        '<!DOCTYPE html><html><head><meta charset="utf-8"><title>' +
-        htmlWebpackPlugin.options.title +
-        '</title></head><body><div id="app"></div></body></html>',
-      filename: 'index.html',
-    }),
-    new MiniCssExtractPlugin(),
+  plugins:[
+    new HWP({
+      title: 'Development',
+      template: path.join(__dirname,'./src/index.html')
+    })
   ],
+  devServer: {
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, 'dist'),
+      publicPath: '/build'
+    },
+    proxy: {
+      '/api': 'http://localhost:1111',
+    }
+  }
 };
-
-module.exports = config;
