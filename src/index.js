@@ -6,10 +6,10 @@ import { Provider } from 'react-redux'
 
 render(
 //Provider passes down the redux store to our App//
-    <Provider store={store} >
+    //<Provider store={store} >
     <React.StrictMode>
         <App />
     </React.StrictMode>
-    </Provider>
+    //</Provider>
     ,document.getElementById('root')
 );
