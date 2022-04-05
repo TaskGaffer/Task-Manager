@@ -1,7 +1,9 @@
 import React from 'react';
 
 const InputField = () => {
-  return ()
+  return (
+    <div></div>
+  )
 }
 
 
