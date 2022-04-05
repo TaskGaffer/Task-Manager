@@ -13,7 +13,7 @@ userController.newUser = async (req, res, next) => {
     const response = await db.query(query.text, query.values);
     console.log(response.rows[0]._id);
     const user_id = response.rows[0]._id;
-    res.locals.id = user_id;
+    res.locals.userId = user_id;
     return next();
   } catch (err) {
     // do something w/ err
@@ -35,7 +35,7 @@ userController.login = async (req, res, next) => {
     const response = await db.query(query.text, query.values);
     console.log(response.rows[0]._id);
     const user_id = response.rows[0]._id;
-    res.locals.id = user_id;
+    res.locals.userId = user_id;
     return next();
   } catch (err) {
     // do something w/ err

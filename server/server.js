@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const userController = require('./controllers/userController.js');
+const headerController = require('./controllers/headerController.js');
+const taskController = require('./controllers/taskController.js');
 
 const app = express();
 const PORT = 3000;
@@ -21,34 +23,46 @@ app.get('/users/login', userController.login, (req, res) => {
 });
 
 /////// HEADER ROUTES
-// get headers
-app.get('/header', (req, res) => {
+// new header
+app.post('/header/newHeader', headerController.newHeader, (req, res) => {
   return res.status(200).json(res.locals);
 });
-// new header
-app.post('/header/newHeader', (req, res) => {
+// get headers
+app.get('/header/getAllHeaders', headerController.getHeader, (req, res) => {
   return res.status(200).json(res.locals);
 });
 
 /////// TASK ROUTES
-// get tasks
-app.get('/tasks', (req, res) => {
+// post task
+app.post('/tasks/newTask', taskController.postTask, (req, res) => {
   return res.status(200).json(res.locals);
 });
-// post task
-app.post('/tasks/newTask', (req, res) => {
+// get tasks
+app.get('/tasks/getTasks', taskController.getTasks, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // delete task
-app.delete('/tasks/deleteTask', (req, res) => {
+app.delete('/tasks/deleteTask', taskController.deleteTask, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // change order (drag and drop)
-app.put('/tasks/order', (req, res) => {
-  return res.status(200).json(res.locals);
-});
+app.patch(
+  '/tasks/changeTaskOrder',
+  taskController.changeTaskOrder,
+  (req, res) => {
+    return res.status(200).json(res.locals);
+  }
+);
 // change progress (not started, in progress, complete)
-app.put('/tasks/progress', (req, res) => {
+app.patch(
+  '/tasks/changeTaskProgress',
+  taskController.changeTaskProgress,
+  (req, res) => {
+    return res.status(200).json(res.locals);
+  }
+);
+// change task
+app.patch('/tasks/changeTask', taskController.changeTask, (req, res) => {
   return res.status(200).json(res.locals);
 });
 
