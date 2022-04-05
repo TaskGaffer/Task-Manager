@@ -1,20 +1,70 @@
-// const db = require('../models/model)
+const db = require('../models/model');
 
 const taskController = {};
 
 // get tasks
-taskController.getTasks = (req, res, next) => {};
+taskController.getTasks = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot get tasks. ERROR: ${err}`,
+      message: { err: 'Error occurred in taskController.getTasks' },
+    });
+  }
+};
 
 // post task
-taskController.postTask = (req, res, next) => {};
+taskController.postTask = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot post task. ERROR: ${err}`,
+      message: { err: 'Error occurred in taskController.postTask' },
+    });
+  }
+};
 
 // delete task
-taskController.deleteTask = (req, res, next) => {};
+taskController.deleteTask = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot delete task. ERROR: ${err}`,
+      message: { err: 'Error occurred in taskController.deleteTask' },
+    });
+  }
+};
 
 // change order
-taskController.changeTaskOrder = (req, res, next) => {};
+taskController.changeTaskOrder = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot change task order. ERROR: ${err}`,
+      message: { err: 'Error occurred in taskController.changeTaskOrder' },
+    });
+  }
+};
 
 // change progress
-taskController.changeTaskProgress = (req, res, next) => {};
+taskController.changeTaskProgress = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot change task progress. ERROR: ${err}`,
+      message: { err: 'Error occurred in taskController.changeTaskProgress' },
+    });
+  }
+};
 
 module.exports = taskController;
