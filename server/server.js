@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const userController = require('./controllers/userController.js');
 
 const app = express();
 const PORT = 3000;
@@ -11,11 +12,11 @@ app.use(cors());
 
 /////// USER ROUTES
 // new user
-app.post('/users/newUser', (req, res) => {
+app.post('/users/newUser', userController.newUser, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // user login
-app.get('/users/login', (req, res) => {
+app.get('/users/login', userController.login, (req, res) => {
   return res.status(200).json(res.locals);
 });
 
