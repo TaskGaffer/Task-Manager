@@ -1,5 +1,18 @@
-@tailwind base;
+.inputField {
+  display: flex;
+  justify-content: center;
+  padding: 1vw;
+  border: 1px solid ;
+  margin: 0 20vw;
+  border-radius: 5px;
+}
 
-@tailwind components;
+.inputBox {
+  display: flex;
+  width: 35vw;
+}
 
-@tailwind utilities;
+.inputSubmit {
+  display:flex;
+  align-self: center;
+}
