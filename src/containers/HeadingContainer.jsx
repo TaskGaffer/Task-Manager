@@ -1,10 +1,12 @@
 import React from 'react';
 import TasksContainer from './TasksContainer';
 
-
 const HeadingContainer = () => {
-  return ()
-}
-
+  return (
+    <div>
+      <TasksContainer />
+    </div>
+  );
+};
 
 export default HeadingContainer;
