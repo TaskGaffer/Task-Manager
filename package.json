@@ -38,7 +38,10 @@
     "mini-css-extract-plugin": "^2.6.0",
     "prettier": "^2.6.2",
     "react": "17.0.2",
+<<<<<<< HEAD
     "react-dom": "^18.0.0",
+=======
+>>>>>>> 77bf1881f241edbcc1e049ec5d974fd3467a3053
     "react-redux": "^7.2.8",
     "redux": "^4.1.2",
     "style-loader": "^3.3.1",
@@ -61,8 +64,8 @@
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",
     "nodemon": "^2.0.15",
+    "pg": "^8.7.3",
     "prettier": "^2.6.2",
-    "react": "^18.0.0",
     "react-hot-loader": "^4.5.3",
     "style-loader": "^3.3.1",
     "webpack": "^5.71.0",
