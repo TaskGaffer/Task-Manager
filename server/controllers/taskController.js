@@ -2,30 +2,6 @@ const db = require('../models/model');
 
 const taskController = {};
 
-<<<<<<< HEAD
-// get tasks
-taskController.getTasks = async (req, res, next) => {
-  try {
-    // await database query
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot get tasks. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.getTasks' },
-    });
-  }
-};
-
-// post task
-taskController.postTask = async (req, res, next) => {
-  try {
-    // await database query
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot post task. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.postTask' },
-=======
 // post task
 taskController.postTask = async (req, res, next) => {
   const query = {
@@ -71,22 +47,12 @@ taskController.getTasks = async (req, res, next) => {
     return next({
       log: `Cannot get tasks. ERROR: ${err}`,
       message: { err: 'Error occurred in taskController.getTasks' },
->>>>>>> dev
     });
   }
 };
 
 // delete task
 taskController.deleteTask = async (req, res, next) => {
-<<<<<<< HEAD
-  try {
-    // await database query
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot delete task. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.deleteTask' },
-=======
   const query = {
     text: `DELETE FROM tasks WHERE _id=$1 RETURNING _id;`,
     values: [req.body.task_id],
@@ -103,22 +69,10 @@ taskController.deleteTask = async (req, res, next) => {
     return next({
       log: `Cannot get tasks. ERROR: ${err}`,
       message: { err: 'Error occurred in taskController.getTasks' },
->>>>>>> dev
     });
   }
 };
 
-<<<<<<< HEAD
-// change order
-taskController.changeTaskOrder = async (req, res, next) => {
-  try {
-    // await database query
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot change task order. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.changeTaskOrder' },
-=======
 // change order AAAAAHHHHHHHHH!!!!!!
 taskController.changeTaskOrder = async (req, res, next) => {
   const query = {
@@ -137,22 +91,12 @@ taskController.changeTaskOrder = async (req, res, next) => {
     return next({
       log: `Cannot get tasks. ERROR: ${err}`,
       message: { err: 'Error occurred in taskController.getTasks' },
->>>>>>> dev
     });
   }
 };
 
 // change progress
 taskController.changeTaskProgress = async (req, res, next) => {
-<<<<<<< HEAD
-  try {
-    // await database query
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot change task progress. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.changeTaskProgress' },
-=======
   const query = {
     text: `UPDATE tasks SET progress=$1 WHERE _id=$2 RETURNING _id;`,
     values: [req.body.new_progress, req.body.task_id],
@@ -191,7 +135,6 @@ taskController.changeTask = async (req, res, next) => {
     return next({
       log: `Cannot get tasks. ERROR: ${err}`,
       message: { err: 'Error occurred in taskController.getTasks' },
->>>>>>> dev
     });
   }
 };
