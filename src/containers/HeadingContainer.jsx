@@ -42,13 +42,6 @@ const dummyData = [
   }
 ];
 
-<<<<<<< HEAD
-const HeadingContainer = () => {
-  return (
-    <div></div>
-  )
-}
-=======
 const heading = [];
 dummyData.forEach((el, index) => {
   heading.push(
@@ -60,7 +53,6 @@ dummyData.forEach((el, index) => {
     />
   );
 });
->>>>>>> 77bf1881f241edbcc1e049ec5d974fd3467a3053
 
 const HeadingContainer = () => {
   return (
