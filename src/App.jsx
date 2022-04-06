@@ -1,32 +1,30 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import InputField from './components/InputField';
-import HeadingContainer from './containers/HeadingContainer'
-
-import {useSelector} from 'react-redux'
-import ReactDOM from 'react-dom'
-
-import { Grid } from '@mui/material';
+import HeadingContainer from './containers/HeadingContainer';
 
 
-function App (){
+import {Provider, useSelector} from 'react-redux';
+import ReactDOM from 'react-dom';
+
+import {Grid} from '@mui/material';
+
+function App() {
   ////const logged = useSelector((state) => state?.login.loggedIn)
-  return(
+  return (
     
-  <Grid>
-
     <Grid>
-      <NavBar/>
-    </Grid>
-    <Grid>
-      <InputField/>
-    </Grid>
-    <Grid>
-      <HeadingContainer/>
+      <Grid>
+        <NavBar />
+      </Grid>
+      <Grid>
+        <InputField />
+      </Grid>
+      <Grid>
+        <HeadingContainer />
+      </Grid>
     </Grid>
 
-   </Grid>
-
-  )
+  );
 }
 export default App;
