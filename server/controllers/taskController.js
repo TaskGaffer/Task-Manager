@@ -72,19 +72,65 @@ taskController.deleteTask = async (req, res, next) => {
     });
   }
 };
-
+/*
+  const frontArray = [
+    {
+      _id: 10,
+      task_order: 3,
+    },
+    {
+      _id: 9,
+      task_order: 2,
+    },
+    {
+      _id: 11,
+      task_order: 4,
+    },
+    {
+      _id: 12,
+      task_order: 5,
+    },
+    {
+      _id: 13,
+      task_order: 6,
+    },
+    {
+      _id: 14,
+      task_order: 7,
+    },
+  ];
+  
+  */
 // change order AAAAAHHHHHHHHH!!!!!!
 taskController.changeTaskOrder = async (req, res, next) => {
-  const query = {
-    text: `UPDATE tasks SET task_order=$1 WHERE _id=$2 RETURNING _id;`,
-    values: [req.body.new_progress, req.body.task_id],
-  };
   try {
+    // const responses = [];
+    // async function loopQueries() {
+    //   for (let i = 0; i < req.body.length; i++) {
+    //     const query = {
+    //       text: `UPDATE tasks SET task_order=$1 WHERE _id=$2 RETURNING _id;`,
+    //       values: [req.body[i].new_taskOrder, req.body[i].task_id],
+    //     };
+    //     const response = await db.query(query.text, query.values);
+    //     console.log('RESPONSE', response);
+    //     responses.push(response);
+    //   }
+    // }
+    // loopQueries();
+    const responses = [];
     // await database query
-    const response = await db.query(query.text, query.values);
-    console.log(response.rows[0]._id);
-    const task_id = response.rows[0]._id;
-    res.locals.taskId = task_id;
+    console.log('REQ.BODY', req.body);
+    for (let i = 0; i < req.body.length; i++) {
+      const query = {
+        text: `UPDATE tasks SET task_order=$1 WHERE _id=$2 RETURNING _id;`,
+        values: [req.body[i].new_taskOrder, req.body[i].task_id],
+      };
+      const response = await db.query(query.text, query.values);
+      console.log('RESPONSE', response);
+      responses.push(response);
+    }
+    console.log('RESPONSES ARRAY', responses);
+    res.locals.changedOrder = responses;
     return next();
   } catch (err) {
     // do something w/ err

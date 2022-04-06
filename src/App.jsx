@@ -25,7 +25,7 @@ function App (){
       <HeadingContainer/>
     </Grid>
 
-   </Grid>
+  </Grid>
 
   )
 }
