@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TasksContainer from './TasksContainer';
 import Container from '@mui/material/Box';
 import Box from '@mui/material/Box';
@@ -11,12 +11,24 @@ const dummyData = [
       {
         _id: 1,
         task: 'study',
-        task_order: 8,
+        task_order: 0,
         progress: 'incomplete'
       },
       {
         _id: 2,
         task: 'sleep',
+        task_order: 1,
+        progress: 'incomplete'
+      },
+      {
+        _id: 3,
+        task: 'yup',
+        task_order: 2,
+        progress: 'incomplete'
+      },
+      {
+        _id: 4,
+        task: 'nop',
         task_order: 3,
         progress: 'incomplete'
       }
@@ -24,23 +36,25 @@ const dummyData = [
   },
   {
     heading: 'rave',
-    header_id: 1,
+    header_id: 2,
     tasks: [
       {
         _id: 1,
         task: 'eat',
-        task_order: 2,
+        task_order: 1,
         progress: 'incomplete'
       },
       {
         _id: 2,
         task: 'repeat',
-        task_order: 3,
+        task_order: 0,
         progress: 'incomplete'
       }
     ]
   }
 ];
+
+const HeadingContainer = () => {
 
 const heading = [];
 dummyData.forEach((el, index) => {
@@ -54,10 +68,13 @@ dummyData.forEach((el, index) => {
   );
 });
 
-const HeadingContainer = () => {
   return (
-    <Container className="headingContainer" maxWidth="sm">
-      <Box sx={{bgcolor: '#cfe8fc', height: '50vh'}}>{heading}</Box>
+    <Container>
+      <Box
+        className='boxContainer'
+      >
+        {heading}
+      </Box>
     </Container>
   );
 };

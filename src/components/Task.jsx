@@ -1,14 +1,20 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { Draggable } from 'react-beautiful-dnd';
 
-const Task = ({id, taskText, progress, position}) => {
+const Task = ({ id, taskText, progress, position }) => {
 
   return (
-    <div>
-      {taskText}
-    </div>
-
+    <Draggable key={position} draggableId={`${position}${taskText}`} index={position}>
+      {(provided) => (
+        <div ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}>
+          <div className='taskCard'>
+            {taskText}
+          </div>
+        </div>
+      )}
+    </Draggable>
   )
 }
 

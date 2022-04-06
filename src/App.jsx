@@ -2,11 +2,7 @@ import React from 'react';
 import NavBar from './components/NavBar';
 import InputField from './components/InputField';
 import HeadingContainer from './containers/HeadingContainer';
-
-import ReactDOM from 'react-dom'
-
-import {Provider, useSelector} from 'react-redux';
-
+import './styles.css'
 
 import {Grid} from '@mui/material';
 
