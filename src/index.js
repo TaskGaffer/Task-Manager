@@ -2,14 +2,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './App.jsx';
 import { Provider } from 'react-redux';
-import './styles.css'
-
+// import { store } from './features/store.js'
 render(
   //Provider passes down the redux store to our App//
-  //<Provider store={store} >
+  // <Provider store={store} >
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  //</Provider>
+  // </Provider>,
   document.getElementById('root')
 );
