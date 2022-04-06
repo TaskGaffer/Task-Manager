@@ -22,12 +22,6 @@ function App() {
       </Grid>
     </Grid>
 
-<<<<<<< HEAD
-  </Grid>
-
-  )
-=======
   );
->>>>>>> dev
 }
 export default App;
