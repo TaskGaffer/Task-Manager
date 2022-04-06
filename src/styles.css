@@ -1,5 +1,61 @@
-@tailwind base;
+.inputField {
+  display: flex;
+  justify-content: center;
+  padding: 1vw;
+  border: 1px solid ;
+  margin: 0 20vw;
+  border-radius: 5px;
+}
 
-@tailwind components;
+.inputBox {
+  display: flex;
+  width: 35vw;
+}
 
-@tailwind utilities;
+.inputSubmit {
+  display:flex;
+  align-self: center;
+}
+
+
+
+.boxContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 5vh;
+  margin: 1vw;
+  width: 90vw;
+  height: 50vh
+}
+
+.taskColumn{
+  border: 1px solid;
+  border-radius: 5px;
+  margin: 0px 1vw;
+  width: 15vw
+}
+
+.columnTitle{
+  display: flex;
+  justify-content: center
+}
+
+.taskList{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+}
+
+.taskCard {
+  display:flex;
+  justify-content:center;
+  align-self:center;
+  border: 1px solid;
+  padding:3vh;
+  border-radius: 5px;
+  margin: 5px;
+  width:10vw
+}
