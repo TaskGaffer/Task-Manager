@@ -46,4 +46,27 @@ headerController.getHeader = async (req, res, next) => {
   }
 };
 
+// get all headers and tasks
+headerController.getAll = async (req, res, next) => {
+  const query = {
+    text: `SELECT * FROM header FULL OUTER JOIN tasks ON header._id=tasks.header_id;`,
+  };
+  try {
+    // await database query
+    console.log('before query');
+    const response = await db.query(query.text);
+    console.log('after query');
+    console.log(response.rows);
+    const allUserHeaders = response.rows;
+    res.locals.headers = allUserHeaders;
+    return next();
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot get headers. ERROR: ${err}`,
+      message: { err: 'Error occurred in headerController.getHeader' },
+    });
+  }
+};
+
 module.exports = headerController;

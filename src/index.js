@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 import  store  from './features/store'
 render(
   //Provider passes down the redux store to our App//
-  <Provider store={store} >
+  <Provider store={store}>
     <React.StrictMode>
       <App />
-    </React.StrictMode>,
+    </React.StrictMode>
   </Provider>,
   document.getElementById('root')
 );

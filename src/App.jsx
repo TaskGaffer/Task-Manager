@@ -1,60 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import InputField from './components/InputField';
 import HeadingContainer from './containers/HeadingContainer';
 import './styles.css'
+import { Grid } from '@mui/material';
 
-import {Grid} from '@mui/material';
+const dummyData = [
+  {
+    heading: 'Science',
+    header_id: 1,
+    tasks: [
+      {
+        _id: 1,
+        task: 'study',
+        task_order: 0,
+        progress: 'incomplete'
+      },
+      {
+        _id: 2,
+        task: 'sleep',
+        task_order: 1,
+        progress: 'incomplete'
+      }
+    ]
+  },
+  {
+    heading: 'Rave',
+    header_id: 2,
+    tasks: [
+      {
+        _id: 1,
+        task: 'eat',
+        task_order: 1,
+        progress: 'incomplete'
+      },
+      {
+        _id: 2,
+        task: 'repeat',
+        task_order: 0,
+        progress: 'incomplete'
+      }
+    ]
+  }
+];
 
 function App() {
 
-  const getHeaders = () => {
-    const url = '/header/getAllHeaders';
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ user_id: 1 }), //hard coded user_id for testing
-    })
-      .then((data) => data.json())
-      .then((result) => {
-        const headers = result;
-        // for each header element call fetch req to get its tasks
-        headers.forEach((header) => {
-          getTasks(header._id);
-        });
-      });
-  };
+  const [data, setData] = useState(dummyData)
+  
 
-  const getTasks = (header_id) => {
-    const url = '/tasks/getTasks';
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ header_id }), //hard coded for testing
-    })
-      .then((data) => data.json())
-      .then((result) => {
-        const tasks = result;
-        dispatch(textUpdate.textUpdate(tasks));
-        console.log('Here is the data object ', tasks);
-      });
-  };
 
   return (
-    
+
     <Grid>
       <Grid>
         <NavBar />
       </Grid>
       <Grid>
-        <InputField />
+        <InputField data={data} setData={setData}/>
       </Grid>
       <Grid>
-        <HeadingContainer />
+        <HeadingContainer data={data} setData={setData}/>
       </Grid>
     </Grid>
 
