@@ -72,74 +72,32 @@ taskController.deleteTask = async (req, res, next) => {
     });
   }
 };
-/*
-  const frontArray = [
-    {
-      _id: 10,
-      task_order: 3,
-    },
-    {
-      _id: 9,
-      task_order: 2,
-    },
-    {
-      _id: 11,
-      task_order: 4,
-    },
-    {
-      _id: 12,
-      task_order: 5,
-    },
-    {
-      _id: 13,
-      task_order: 6,
-    },
-    {
-      _id: 14,
-      task_order: 7,
-    },
-  ];
-  
-  */
-// change order AAAAAHHHHHHHHH!!!!!!
-taskController.changeTaskOrder = async (req, res, next) => {
-  try {
-    // const responses = [];
-    // async function loopQueries() {
-    //   for (let i = 0; i < req.body.length; i++) {
-    //     const query = {
-    //       text: `UPDATE tasks SET task_order=$1 WHERE _id=$2 RETURNING _id;`,
-    //       values: [req.body[i].new_taskOrder, req.body[i].task_id],
-    //     };
-    //     const response = await db.query(query.text, query.values);
-    //     console.log('RESPONSE', response);
-    //     responses.push(response);
-    //   }
-    // }
-    // loopQueries();
-    const responses = [];
-    // await database query
-    console.log('REQ.BODY', req.body);
-    for (let i = 0; i < req.body.length; i++) {
-      const query = {
-        text: `UPDATE tasks SET task_order=$1 WHERE _id=$2 RETURNING _id;`,
-        values: [req.body[i].new_taskOrder, req.body[i].task_id],
-      };
-      const response = await db.query(query.text, query.values);
-      console.log('RESPONSE', response);
-      responses.push(response);
-    }
-    console.log('RESPONSES ARRAY', responses);
-    res.locals.changedOrder = responses;
-    return next();
-  } catch (err) {
-    // do something w/ err
-    return next({
-      log: `Cannot get tasks. ERROR: ${err}`,
-      message: { err: 'Error occurred in taskController.getTasks' },
-    });
-  }
-};
+
+// // change order AAAAAHHHHHHHHH!!!!!! COULDN'T GET THIS TO WORK, MOVING ON DUE TO TIME RESTRAINTS
+// taskController.changeTaskOrder = async (req, res, next) => {
+//   try {
+//     /*
+//      */
+//     const responses = [];
+//     // await database query
+//     console.log('REQ.BODY', req.body);
+//     for (let i = 0; i < req.body.length; i++) {
+//       const query = `UPDATE tasks SET task_order=${req.body[i].new_taskOrder} WHERE _id=${req.body[i].task_id} RETURNING _id;`;
+//       const response = await db.query(query);
+//       console.log('RESPONSE', response);
+//       responses.push(response);
+//     }
+//     console.log('RESPONSES ARRAY', responses);
+//     res.locals.changedOrder = responses;
+//     return next();
+//   } catch (err) {
+//     // do something w/ err
+//     return next({
+//       log: `Cannot get tasks. ERROR: ${err}`,
+//       message: { err: 'Error occurred in taskController.getTasks' },
+//     });
+//   }
+// };
 
 // change progress
 taskController.changeTaskProgress = async (req, res, next) => {

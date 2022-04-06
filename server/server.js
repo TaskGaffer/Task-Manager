@@ -2,17 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const userController = require('./controllers/userController.js');
-<<<<<<< HEAD
-=======
 const headerController = require('./controllers/headerController.js');
 const taskController = require('./controllers/taskController.js');
->>>>>>> dev
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 /////// USER ROUTES
@@ -48,14 +45,17 @@ app.get('/tasks/getTasks', taskController.getTasks, (req, res) => {
 app.delete('/tasks/deleteTask', taskController.deleteTask, (req, res) => {
   return res.status(200).json(res.locals);
 });
+
+//COULDN"T GET THIS FEATURE TO WORK WITH TIME RESTRAINTS
 // change order (drag and drop)
-app.patch(
-  '/tasks/changeTaskOrder',
-  taskController.changeTaskOrder,
-  (req, res) => {
-    return res.status(200).json(res.locals);
-  }
-);
+// app.patch(
+//   '/tasks/changeTaskOrder',
+//   taskController.changeTaskOrder,
+//   (req, res) => {
+//     return res.status(200).json(res.locals);
+//   }
+// );
+
 // change progress (not started, in progress, complete)
 app.patch(
   '/tasks/changeTaskProgress',
