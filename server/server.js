@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const userController = require('./controllers/userController.js');
+<<<<<<< HEAD
+=======
 const headerController = require('./controllers/headerController.js');
 const taskController = require('./controllers/taskController.js');
+>>>>>>> dev
 
 const app = express();
 const PORT = 3000;

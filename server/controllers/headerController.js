@@ -2,6 +2,29 @@ const db = require('../models/model');
 
 const headerController = {};
 
+<<<<<<< HEAD
+// get headers
+headerController.getHeader = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot get headers. ERROR: ${err}`,
+      message: { err: 'Error occurred in headerController.getHeader' },
+    });
+  }
+};
+
+// new header
+headerController.newHeader = async (req, res, next) => {
+  try {
+    // await database query
+  } catch (err) {
+    // do something w/ err
+    return next({
+      log: `Cannot add new header. ERROR: ${err}`,
+=======
 // new header
 headerController.newHeader = async (req, res, next) => {
   const query = {
@@ -19,10 +42,13 @@ headerController.newHeader = async (req, res, next) => {
     // do something w/ err
     return next({
       log: `Cannot insert new header. ERROR: ${err}`,
+>>>>>>> dev
       message: { err: 'Error occurred in headerController.newHeader' },
     });
   }
 };
+<<<<<<< HEAD
+=======
 
 // get headers
 headerController.getHeader = async (req, res, next) => {
@@ -45,5 +71,6 @@ headerController.getHeader = async (req, res, next) => {
     });
   }
 };
+>>>>>>> dev
 
 module.exports = headerController;
