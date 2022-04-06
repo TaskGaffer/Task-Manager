@@ -1,57 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { inputAction } from '../features/slices/input-slice';
+
 const InputField = () => {
-  const [inputValue, setInputValue] = useState('')
-  const [errorStatus, setErrorStatus] = useState(false)
+  const dispatch = useDispatch();
+  const inputValue = useSelector((state) => state.input.inputHeader);
+  const errorStatus = useSelector((state) => state.input.error);
 
   const inputChangeHandler = (e) => {
-    setErrorStatus(false)
-    setInputValue(e.target.value)
-  }
+    dispatch(inputAction.setError(false));
+    dispatch(inputAction.setInput(e.target.value));
+  };
 
   const submitHandler = () => {
     if (inputValue.trim().length === 0) {
-      setInputValue('')
-      setErrorStatus(true);
+      dispatch(inputAction.setInput(''));
+      dispatch(inputAction.setError(true));
     } else {
-      console.log(inputValue);
-      setInputValue('')
+      dispatch(inputAction.setInput(''));
     }
-  }
+  };
 
   const keyPressHandler = (e) => {
     if (e.key === 'Enter') {
-      submitHandler()
+      submitHandler();
     }
-  }
-
+  };
 
   return (
     <div className='inputField'>
       <TextField
         className='inputBox'
         error={errorStatus}
-        id={errorStatus ? "outlined-error-helper-text" : "outlined-basic"}
-        label={errorStatus ? "Input Valid Heading" : "Input Heading"}
-        variant="outlined"
+        id={errorStatus ? 'outlined-error-helper-text' : 'outlined-basic'}
+        label={errorStatus ? 'Input Valid Heading' : 'Input Heading'}
+        variant='outlined'
         value={inputValue}
         onChange={inputChangeHandler}
         onKeyPress={keyPressHandler}
       />
       <Button
         className='inputSubmit'
-        variant="outlined"
-        color={errorStatus ? "error" : "primary"}
+        variant='outlined'
+        color={errorStatus ? 'error' : 'primary'}
         onClick={submitHandler}
       >
         <AddIcon />
       </Button>
     </div>
-  )
-}
-
+  );
+};
 
 export default InputField;
