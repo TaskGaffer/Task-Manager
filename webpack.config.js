@@ -52,7 +52,24 @@ module.exports = {
       publicPath: '/build'
     },
     proxy: {
-      '/api': 'http://localhost:1111',
+      // '/header/*': {
+      //   target: 'http://localhost:3000',
+      //   secure: false,
+      // },
+      // '/tasks/*': {
+      //   target: 'http://localhost:3000',
+      //   secure: false,
+      // },
+      // '/users/*': {
+      //   target: 'http://localhost:3000',
+      //   secure: false,
+      // },
+      // '/all/*': {
+      //   target: 'http://localhost:3000',
+      //   secure: false,
+      // },
+      // '/header/getAllHeaders': 'http://localhost:3000',
+      '/all/getAll': 'http://localhost:3000',
     }
   }
 };

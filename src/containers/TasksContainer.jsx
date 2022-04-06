@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import Task from '../components/Task';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { Button } from '@mui/material';
+import TextField from '@mui/material/TextField';
 
-
-const TasksContainer = ({ title, id, tasks }) => {
+const TasksContainer = ({ title, id, tasks, data, setData }) => {
   tasks.sort((a, b) => a.task_order - b.task_order)
   const [column, setColumn] = useState(tasks)
+  const [addTask, setAddTask] = useState('');
+
+  
 
   const taskList = []
   column.forEach((task, index) => {
@@ -35,6 +39,23 @@ const TasksContainer = ({ title, id, tasks }) => {
     // Update the state
     return setColumn(newColumn);
   }
+  const addTaskHandler = () => {
+    const changeColumn = data.find((el) => el.header_id === id)
+    const indexChange = data.indexOf(changeColumn)
+    const newData = data;
+    newData[indexChange].tasks.push({
+      _id: newData[indexChange].tasks.length,
+      task: addTask,
+      task_order: newData[indexChange].tasks.length,
+      progress: 'incomplete'
+    })
+    setAddTask('')
+    setData([...newData])
+  }
+
+  const taskInputHandler = (e) => {
+    setAddTask(e.target.value)
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEndHandler}>
@@ -45,6 +66,13 @@ const TasksContainer = ({ title, id, tasks }) => {
           <div className='taskList'>
             {taskList}
             {provided.placeholder}
+          </div>
+            <div className='addTask'>
+            <TextField size='small'
+              value={addTask}
+              onChange={taskInputHandler}
+            />
+              <Button size='small' onClick={addTaskHandler} style={{ fontSize: '10px' }}>Add Task</Button>
           </div>
         </div>
       )}

@@ -28,7 +28,7 @@ app.post('/header/newHeader', headerController.newHeader, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // get headers
-app.get('/header/getAllHeaders', headerController.getHeader, (req, res) => {
+app.post('/header/getAllHeaders', headerController.getHeader, (req, res) => {
   return res.status(200).json(res.locals);
 });
 
@@ -38,11 +38,16 @@ app.post('/tasks/newTask', taskController.postTask, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // get tasks
-app.get('/tasks/getTasks', taskController.getTasks, (req, res) => {
+app.post('/tasks/getTasks', taskController.getTasks, (req, res) => {
   return res.status(200).json(res.locals);
 });
 // delete task
 app.delete('/tasks/deleteTask', taskController.deleteTask, (req, res) => {
+  return res.status(200).json(res.locals);
+});
+
+// get All headers and All Tasks
+app.get('/all/getAll', headerController.getAll, (req, res) => {
   return res.status(200).json(res.locals);
 });
 
